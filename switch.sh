@@ -3,16 +3,16 @@
 switch_version()
 {
     echo "Switching to PHP"$version
-    sudo apt install php$version-dev
-    sudo a2dismod php*
-    sudo a2enmod php$version
-    sudo service apache2 restart
+    apt install php$version-dev
+    a2dismod php*
+    a2enmod php$version
+    service apache2 restart
 
-    sudo update-alternatives --set php /usr/bin/php$version
-    sudo update-alternatives --set phar /usr/bin/phar$version
-    sudo update-alternatives --set phar.phar /usr/bin/phar.phar$version
-    sudo update-alternatives --set phpize /usr/bin/phpize$version
-    sudo update-alternatives --set php-config /usr/bin/php-config$version
+    update-alternatives --set php /usr/bin/php$version
+    update-alternatives --set phar /usr/bin/phar$version
+    update-alternatives --set phar.phar /usr/bin/phar.phar$version
+    update-alternatives --set phpize /usr/bin/phpize$version
+    update-alternatives --set php-config /usr/bin/php-config$version
 }
 
 install_version()
@@ -21,7 +21,7 @@ install_version()
         read -p "PHP$version is not installed `echo '\n '`Would like to install this PHP$version [Y/n] ?" answer
         answer=${answer:-yes}
         case $answer in
-            [Yy]* ) sudo add-apt-repository ppa:ondrej/php; sudo apt update; sudo apt install php$version; sudo apt install php$version-dev break;;
+            [Yy]* ) add-apt-repository ppa:ondrej/php; apt update; apt install php$version; apt install php$version-dev break;;
             [Nn]* ) exit;;
             * ) echo "In Valid Entry. Abort"; exit;;
         esac
